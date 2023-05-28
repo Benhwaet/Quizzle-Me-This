@@ -34,6 +34,25 @@ clearBtn.addEventListener('click', clearScores())
 
 var secondsLeft = 30;
 
+function startQuiz() {
+
+
+}
+localStorage.setItem("userScore", JSON.stringify(userScore));
+ 
+var timeInterval = setInterval(function () {
+        
+    if (timeLeft >= 1) {
+          timeEl.textContent = timeLeft;
+          timeLeft--;
+        } else {
+          timerEl.textContent = '*BOOM*';
+          document.write("Batman is now dead.")
+          clearInterval(timeInterval);
+          displayMessage();
+        }
+      }, 1000);
+
 function seeHighscores()
 function submitName()
 function closeScores()
