@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Quizzle-Me-This
 
 Timed Quiz - Challenge for Week 4
@@ -42,3 +43,6 @@ Some bootstrap code was also used to help CSS formatting and add certain element
 ## License
 
 This project uses the MIT License, which can be read in full in the repository for this project at <https://github.com/Benhwaet/Quizzle-Me-This>.
+=======
+
+>>>>>>> c720aed988fdc6f7ec562947d46a5b7b44dec263
