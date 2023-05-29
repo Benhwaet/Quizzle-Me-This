@@ -34,9 +34,9 @@ var questions = [
     choices:["<'a', 'b', 'c', 'd'>", "['a', 'b', 'c', 'd'], [a, b, c, d]", "(a, b, c, d)"],
     answer: "['a', 'b', 'c', 'd']"
 }, {
-    question:"How does one link the Javascript file to the HTML file?",
-    choices:["<script src=script.js></script>", "<script href="script.js"></script>", "<script.js></script>", "<script src="script.js"></script>"],
-    answer: "<script src="script.js"></script>"
+    question:"What is the first letter of the Caped Crusader's superhero name?",
+    choices:["a", "b", "c", "d"],
+    answer: "b"
 }, {
     question:"How can one associate a response to an event, like a button being clicked?",
     choices:["Button.listenForEvent('click', function())", "Button.EventListener('click', function())", "Button.addEventListener('click', function())", "Button.listenToEvent('click', function())" ],

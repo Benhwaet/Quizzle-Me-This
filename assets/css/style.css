@@ -1,0 +1,58 @@
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+/* .hide {
+    display: none;
+} */
+body {
+    background-image: linear-gradient(
+        to top,
+        rgba(255, 0, 0, 0.86),
+        rgba(255, 100, 0, 0.86),
+        rgba(255, 200, 0, 0.86),
+        rgba(72, 255, 0, 0.8),
+        rgba(0, 136, 255, 0.86),
+        rgba(38, 0, 255, 0.86),
+        rgba(212, 0, 255, 0.86)
+    ) 
+}
+.navigation {
+    margin-left: 12.5%;
+    background-color: gold;
+    border-radius: 15px;
+    max-width: 75%;
+}
+
+h1, 
+nav {
+    padding: 10px;
+}
+
+#timer {
+   background-color: black;
+   color: gold;
+   border-radius: 15px;
+   font-size: 25px;
+}
+
+.welcomeContainer {
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    margin: 20%;
+    padding: 20px;
+}
+
+button {
+    background-color: gold;
+    border-radius: 20px;
+    color: black;
+}
+
+footer {
+    background-color: black;
+    color: gold;
+    justify-content: flex-end;
+    margin-bottom: 0;
+}

@@ -3,21 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hwaet Quiz?!</title>
+    <title>Quizznizzle?!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
    </head>
-  <body>
+<body>
+<div class="navigation">
   <!-- Static elements -->
     <header>
-        <h1>Quizzler's Quiz Quest</h1>
-        <nav><a href="#">View Highscore</a></nav>
-        <h2 id="timer">Tic Toc: <span id=time>0</span></h2>
-    </header>   
-    <main>
-    <!-- Welcome page container -->
+        <h1><strong>Caped Crusader Quiz Quest</strong></h1>
+        <img id="batman" src="assets/images/batman-6061503_1280.png" height=100px>
+        <img id="quizzle" src="assets/images/Quizzle.png" height="50px">
+        <nav><a href="#">View Highscores</a></nav>
+        <h2 id="timer">Tic Toc: <span id=time>--</span></h2>
+    </div>
+    </header>  
+</div>
+<main>
+<div class="welcomeContainer">
+   <!-- Welcome page container -->
     <h2>Quizzle me this, Batman!</h2>
-    <p>The Quizzler has struck again! They have infiltrated the Bat Cave and planted a Ticking 
+    <p>Holy-Quizzoli! The Quizzler has struck again! They have infiltrated the Bat Cave and planted a Tic Toc
         Time Bomb (patent pending)! 
         The only way to disarm this devious device is to solve the 
         Quizzler's quiz questions! Can our erstwhile heroes answer all Quizzler's questions before 
@@ -25,40 +32,44 @@
         Stay tuned for the explosive conclusion, or click on the button below to help the caped 
         crusader cruise through the quiz! </p>
     <button id="startBtn">Tic Toc, Beat the Clock!</button>
+</div> 
 
+<div class="quizContainer"> 
    <!-- Quiz container -->
         <section id="questions">
-            <h2 id="topic">Quiz Questions</h2>
+            <h2 id="topic"></h2>
                 <ul id="choices">
 
 
                 </ul>
 
         </section>
-
+</div>
+<div class="scoreContainer">
    <!-- Results and highscore form container -->
         <section>
-            <h2>Quiz Quotient <span id=score>0</span></h2>
+            <h2 id="scoreTitle"><span id=score></span></h2>
             <form>
-                <label id="enterName">Initials:</label>
-                <input id="username" type="text">
+                <label id="label" for="username">Initials:</label>
+                <input id="username" type="text" autocomplete="username">
                 <button id="submit">Submit</button>
             </form>
         </section>
+</div>        
     </main>
     <!-- View highscores and clear highscores: taken from bootstrap,(to be)modified -->
     <div class="modal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="highscores">
-              <h5 class="highscoreTitle">Highscores</h5>
+              <h5 class="highscoreTitle">Unexploded Users</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p id="highscoreList">Modal body text goes here.</p>
+              <p id="highscoreList">.</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
               <button type="button" class="btn btn-primary">Clear Highscores</button>
             </div>
           </div>
@@ -71,7 +82,8 @@
         <h4>&copy; BenHwaet 2023</h4>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="./assets/js/quizzler.js"></script>
+    <script src="./assets/js/quizzles.js"></script>
+    <!-- <script src="./assets/js/variables.js"></script> -->
     <script src="./assets/js/script.js"></script>
   </body>
 
