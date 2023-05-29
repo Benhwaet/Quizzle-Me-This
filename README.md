@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Quizzle-Me-This
 
 Timed Quiz - Challenge for Week 4
@@ -9,7 +8,7 @@ This challenge's purpose is to create a timed quiz using Javascript, where corre
 
 ### User Story
 
-```
+```text
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
@@ -17,7 +16,7 @@ SO THAT I can gauge my progress compared to my peers
 
 ### Acceptance Criteria
 
-```
+```text
 GIVEN I am taking a code quiz
 WHEN I click the start button
 THEN a timer starts and I am presented with a question
@@ -43,6 +42,4 @@ Some bootstrap code was also used to help CSS formatting and add certain element
 ## License
 
 This project uses the MIT License, which can be read in full in the repository for this project at <https://github.com/Benhwaet/Quizzle-Me-This>.
-=======
-
->>>>>>> c720aed988fdc6f7ec562947d46a5b7b44dec263
+[EOF]
