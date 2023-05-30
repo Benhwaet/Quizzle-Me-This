@@ -1,46 +1,70 @@
 //Questions array
-
 var quizzles = [
     {
       question: "What are the primitive data types in Javascript?",
-      choices: ["Boolean, String, Number, Undefined", "String, Number, Undefined, Class", "Boolean, Number, String, Defined", "String, Boolean, Letter, Number"],
-      answer: "Boolean, String, Number, Undefined"
+      choices: {
+        a: "Boolean, String, Number, Undefined", 
+        b: "String, Number, Undefined, Class", 
+        c: "Boolean, Number, String, Defined", 
+        d: "String, Boolean, Letter, Number"},
+      answer: "a"
   },{
       question: "What must be included before a variable's name to declare it as a variable?",
-      choices: ["variable", "vari", "var", "vbl"],
-      answer: "var"
+      choices: {
+        a: "variable", 
+        b: "vari", 
+        c: "var", 
+        d: "vbl"},
+      answer: "c"
   },{
       question: "How does one fetch an element by id through DOM?",
-      choices: ["document.getIdElement", "window.getElementId", "document.getElementById", "document.writeElementbyId"],
-      answer: "document.getElementById"
+      choices: {
+        a: "document.getIdElement", 
+        b: "window.getElementId", 
+        c: "document.getElementById", 
+        d: "document.writeElementbyId"},
+      answer: "c"
   }, {
       question: "How does one create a new function?",
-      choices: ["function = myFunction()", "function(myFunction())", "function: myFunction()", "function myFunction()"],
-      answer: "function myFunction()"
+      choices: {
+        a: "function = myFunction()", 
+        b: "function(myFunction())", 
+        c: "function: myFunction()", 
+        d: "function myFunction()"},
+      answer: "d"
   }, {
       question: "What must be included before a variable's name to declare it as a variable?",
-      choices: ["variable", "vari", "var", "vbl"],
-      answer: "var"
+      choices: {
+        a:"var", b: "let", c: "const", d: "any of the above"},
+      answer: "d"
   }, {
       question:"How can one determine if there is strict equality between variables 'a' and 'b'?",
-      choices:["a == b", "a =!= b", "a === b", "a = b"],
-      answer: "a === b"
+      choices:{a: "a == b", b: "a =!= b", c: "a === b", d: "a = b"},
+      answer: "c"
   }, {
       question:"How can one identify if both expressions are true?",
-      choices:["expression1 || expression2", "expression1 =!= expression2", "expression1 && expression2", "expression1 == expression2"],
-      answer: "expression1 && expression2"
+      choices:{
+        a: "expression1 || expression2", 
+        b: "expression1 =!= expression2", 
+        c: "expression1 && expression2", 
+        d:"expression1 == expression2"},
+      answer: "c"
   }, {
       question:"How does one write an array?",
-      choices:["<'a', 'b', 'c', 'd'>", "['a', 'b', 'c', 'd'], [a, b, c, d]", "(a, b, c, d)"],
-      answer: "['a', 'b', 'c', 'd']"
+      choices:{a: "<'a', 'b', 'c', 'd'>", b: "['a', 'b', 'c', 'd'], c: [a, b, c, d]", d: "(a, b, c, d)"},
+      answer: "b"
   }, {
       question:"What is the first letter of the Caped Crusader's superhero name?",
-      choices:["a", "b", "c", "d"],
+      choices:{a: "a", b: "b", c: "c", d: "d"},
       answer: "b"
   }, {
       question:"How can one associate a response to an event, like a button being clicked?",
-      choices:["Button.listenForEvent('click', function())", "Button.EventListener('click', function())", "Button.addEventListener('click', function())", "Button.listenToEvent('click', function())" ],
-      answer: "Button.addEventListener('click', function())"
+      choices:{
+        a: "Button.listenForEvent('click', function())", 
+        b: "Button.EventListener('click', function())", 
+        c: "Button.addEventListener('click', function())", 
+        d: "Button.listenToEvent('click', function())"},
+      answer: "c"
   }]
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
@@ -50,9 +74,11 @@ $(document).ready(function(){
     $(".scoreContainer").hide();
   });//works
 
-var question0;
+var quizzleNum = quizzles.length;
+console.log(quizzleNum)
 var welcomeContainer = $(".welcomeContainer");
 var quizTopic = $("#topic");
+var listEl = $("#listEl");
 var quizChoices = $("#choices");
 var quizContainer = $("#quizContainer")
 
@@ -62,20 +88,11 @@ var startQuiz = function (event) {
     
     quizTopic.textContent = '';
     quizChoices.textContent = '';
-
-    for (var i = 0; i <= 10; i++){
+    console.log(quizzles.question)
+    for (var i = 0; i <= quizzles[i].choices.length; i++){
         // var questionTopic = document.createElement("li");
         // questionTopic.textContent = questions[i];
         quizChoices.text(quizzles.choices)
-
-        // quizChoices.createElement("li")
-        var listEl = $("topic").createElement("li")
-        listEl.addClass("questionList").text(quizzles.question);
-        $(".questionList").addClass("choicesList").text(quizzles.choices)
-        
-        quizTopic.appendChild(listEl)
-
-        // var bulletEl = 
         
     }
 
