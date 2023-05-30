@@ -1,6 +1,6 @@
 //Questions array
 
-var questions = [
+var quizzles = [
   {
     question: "What are the primitive data types in Javascript?",
     choices: ["Boolean, String, Number, Undefined", "String, Number, Undefined, Class", "Boolean, Number, String, Defined", "String, Boolean, Letter, Number"],
