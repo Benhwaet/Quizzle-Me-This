@@ -70,22 +70,19 @@ var quizzles = [
   //Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
   var questionNum = quizzles.length;
   var timeLeft = 30;
-  var currentQuestion;
   var gameScore;
   var gameStop = true;
   var timerInterval;
   var userAnswers = [];
   var currentQuestion = 0;
 
-  var timeEl = $("#time");
-  //timeEl.textContent = timeLeft;
+  var timeEl = $("#time")
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
 $(document).ready(function(){
-  $(".modal").hide();
+  $("#highscoreModal").hide();
   $("#quizContainer").hide();
   $("#scoreContainer").hide();
-  $("#highscoreModal").hide()
 });
 
 function viewHighscores() {
@@ -101,7 +98,6 @@ function countdown() {
     // As long as the `timeLeft` is greater than 1
     if (timeLeft >= 1) {
       // Set the `textContent` of `timeEl` to show the remaining seconds
-      //timeEl.textContent = timeLeft;
       //console.log("countdown: ", timeLeft);
       $("#time").text(timeLeft);  // --> jQuery Version
       // Decrement `timeLeft` by 1
@@ -116,26 +112,24 @@ function countdown() {
 }
 
 function startQuiz() {
-  
   $("#welcomeContainer").hide();
   $("#quizContainer").show();
   countdown();
   // timeInterval();
   console.log(quizzles[0].question)
 
-$(".topic").text(quizzles[currentQuestion].question);
+// for (var i = 0; i < questions[currentquestion].choices.length; i++) {
 
-var choice_a = $("<button>").text(quizzles[currentQuestion].choices.a);
-var choice_b = $("<button>").text(quizzles[currentQuestion].choices.b);
-var choice_c = $("<button>").text(quizzles[currentQuestion].choices.c);
-var choice_d = $("<button>").text(quizzles[currentQuestion].choices.d);
+$(".topic").text(quizzles[currentQuestion].question);
+  
+var choice_a = $("<button id='choice-a' class='choice'>").text(quizzles[currentQuestion].choices.a);
+var choice_b = $("<button id='choice-b' class='choice'>").text(quizzles[currentQuestion].choices.b);
+var choice_c = $("<button id='choice-c' class='choice'>").text(quizzles[currentQuestion].choices.c);
+var choice_d = $("<button id='choice-d' class='choice'>").text(quizzles[currentQuestion].choices.d);
 
 $(".list").append(choice_a, choice_b, choice_c, choice_d);
 
-  // for (var currentQuestion = 0; currentQuestion < questionNum; currentQuestion++) {
-          
-  // }
-  
+
   // // testing condtion 
   // if(currentQuestion >= quizzles.length) {
   //   // end our timer
@@ -143,11 +137,11 @@ $(".list").append(choice_a, choice_b, choice_c, choice_d);
   //   // hide qiuz container
   //   // show highscores modal ... etc..
   // }
-}
-  
+// }
+};  
 
 function nextQuest() {
-  questionNum++;
+  currentQuestion++;
 }
 
 function saveLocal() {

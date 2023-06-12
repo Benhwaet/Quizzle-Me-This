@@ -19,14 +19,14 @@
       <img class="headerimage"id="quizzle" src="assets/images/Quizzle.png" height="50px">
     </div>
     <div>
-      <nav><button class="button m-3" id="viewHighscores" onclick="viewHighscores()">Quizzle Masters</button></nav>
+      <button class="button m-3" id="viewHighscores" onclick="viewHighscores()">Quizzle Masters</button>
     </div>
   </header> 
 
   <main>
   <!-- Welcome page container -->
       <section id="welcomeContainer" class="welcome container">
-        <h2>Quizzle me this, Batman!</h2>
+        <h2 class="quizzleMe">Quizzle me this, Batman!</h2>
         <p>Holy-Quizzoli! The Quizzler has struck again! They have infiltrated the Bat Cave and planted a Tic Toc
             Time Bomb (patent pending)! 
             The only way to disarm this devious device is to solve the 
@@ -40,11 +40,9 @@
       <section id="quizContainer" class="quiz container">
         <h2 id="timer" class="timer p-3">Tic-Toc: <span id="time"></span></h2> 
         <p id="topicContainer" class="topic">
-          
         </p>
         <div id="choicesContainer" class="choices">
           <ul class="list" id="options">
-            
           </ul>
         </div>
         <div class="moveOn">
@@ -64,23 +62,18 @@
       </section>        
     <!-- View highscores and clear highscores: taken from bootstrap-->
       <section id="highscoreModal" class="modal" tabindex="-1">
-        <div id="heroes">
-          <div id="spiel">
-            <div id="highscores">
+            <div>
               <h5 id="highscoreTitle">Unexploded Users:</h5>
               <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
             </div>
             <div id="modal-body">
               <p id="highscoreList">
-              
               </p>
             </div>
-            <div class="footer" id="modal-footer">
+            <div id="modal-footer">
               <button id="exit" type="button" class="btn btn-secondary" onclick="closeModal()" data-bs-dismiss="modal">Exit</button>
               <button id="clear" type="button" class="btn btn-primary" onclick="clearSaves()">Clear</button>
             </div>
-          </div>
-        </div>
       </section>
 
     </main>
