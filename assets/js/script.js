@@ -67,7 +67,18 @@ var quizzles = [
       answer: "c"
   }]
 
+  //Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
   var questionNum = quizzles.length;
+  var timeLeft = 30;
+  var currentQuestion;
+  var gameScore;
+  var gameStop = true;
+  var timerInterval;
+  var userAnswers = [];
+  var currentQuestion = 0;
+
+  var timeEl = $("#time");
+  //timeEl.textContent = timeLeft;
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
 $(document).ready(function(){
@@ -81,27 +92,59 @@ function viewHighscores() {
   $("#highscoreModal").show();
 }
 
+// //function taken from edX bootcamp class notes
+function countdown() {
+//   timeLeft = 30;
+  console.log("Timer Element: ", timeEl);
+  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  var timeInterval = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (timeLeft >= 1) {
+      // Set the `textContent` of `timeEl` to show the remaining seconds
+      //timeEl.textContent = timeLeft;
+      //console.log("countdown: ", timeLeft);
+      $("#time").text(timeLeft);  // --> jQuery Version
+      // Decrement `timeLeft` by 1
+      timeLeft--;
+    } else if (timeLeft === 0) {
+      // Once `timeLeft` gets to 0, set `timeEl` to an empty string
+      $("#time").text("*BOOM*");
+      // Use `clearInterval()` to stop the timer
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+}
+
 function startQuiz() {
+  
   $("#welcomeContainer").hide();
   $("#quizContainer").show();
+  countdown();
+  // timeInterval();
+  console.log(quizzles[0].question)
 
-  for (var i = 0; i < questionNum; i++) {
+$(".topic").text(quizzles[currentQuestion].question);
+
+var choice_a = $("<button>").text(quizzles[currentQuestion].choices.a);
+var choice_b = $("<button>").text(quizzles[currentQuestion].choices.b);
+var choice_c = $("<button>").text(quizzles[currentQuestion].choices.c);
+var choice_d = $("<button>").text(quizzles[currentQuestion].choices.d);
+
+$(".list").append(choice_a, choice_b, choice_c, choice_d);
+
+  // for (var currentQuestion = 0; currentQuestion < questionNum; currentQuestion++) {
           
-  }
-
-  var timeInterval = setInterval(function () {
-      
-    if (timeLeft >= 1) {
-          timeEl.textContent = timeLeft;
-          timeLeft--;
-        } else {
-          timerEl.textContent = "*BOOM*";
-          document.write("Batman is now dead.")
-          clearInterval(timeInterval);
-          displayMessage();
-        }
-      }, 1000);
-    }
+  // }
+  
+  // // testing condtion 
+  // if(currentQuestion >= quizzles.length) {
+  //   // end our timer
+  //   // calulate user score
+  //   // hide qiuz container
+  //   // show highscores modal ... etc..
+  // }
+}
+  
 
 function nextQuest() {
   questionNum++;
@@ -113,7 +156,10 @@ function saveLocal() {
 
 function closeModal() {
   $("#highscoreModal").hide();
+  
 }
+
+$("body").on("click", closeModal);
 
 function clearSaves() {
   localStorage.removeItem("highscores");
