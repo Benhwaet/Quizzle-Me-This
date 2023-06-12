@@ -25,61 +25,63 @@
 
   <main>
   <!-- Welcome page container -->
-  <section id="welcomeContainer" class="welcome container">
-    <h2>Quizzle me this, Batman!</h2>
-    <p>Holy-Quizzoli! The Quizzler has struck again! They have infiltrated the Bat Cave and planted a Tic Toc
-        Time Bomb (patent pending)! 
-        The only way to disarm this devious device is to solve the 
-        Quizzler's quiz questions! Can our erstwhile heroes answer all Quizzler's questions before 
-        their time runs out!?
-        Stay tuned for the explosive conclusion, or click on the button below to help the caped 
-        crusader cruise through the quiz! </p>
-    <button id="startBtn" type="submit" onclick="startQuiz()">Tic Toc, Beat the Clock!</button>
-  </section> 
+      <section id="welcomeContainer" class="welcome container">
+        <h2>Quizzle me this, Batman!</h2>
+        <p>Holy-Quizzoli! The Quizzler has struck again! They have infiltrated the Bat Cave and planted a Tic Toc
+            Time Bomb (patent pending)! 
+            The only way to disarm this devious device is to solve the 
+            Quizzler's quiz questions! Can our erstwhile heroes answer all Quizzler's questions before 
+            their time runs out!?
+            Stay tuned for the explosive conclusion, or click on the button below to help the caped 
+            crusader cruise through the quiz! </p>
+        <button id="startBtn" type="submit" onclick="startQuiz()">Tic Toc, Beat the Clock!</button>
+      </section> 
 <!-- Quiz container -->
-  <section id="quizContainer" class="quiz container">
-    <h2 id="timer" class="timer p-3">Tic Toc: <span id="time">30</span></h2> 
-    <p id="topicContainer" class="topic">
-
-    </p>
-    <div id="choicesContainer" class="choices">
-      <ul class="list" id="options">
-
-      </ul>
-    </div>
-    <div class="moveOn">
-      <button type="button" class="nextQuest" onclick="nextQuest()">Next</button>
-    </div>
-  </section>
+      <section id="quizContainer" class="quiz container">
+        <h2 id="timer" class="timer p-3">Tic Toc: <span id="time">30</span></h2> 
+        <p id="topicContainer" class="topic">
+          
+        </p>
+        <div id="choicesContainer" class="choices">
+          <ul class="list" id="options">
+            
+          </ul>
+        </div>
+        <div class="moveOn">
+          <button type="button" class="nextQuest" onclick="nextQuest()">Next</button>
+        </div>
+      </section>
    <!-- Results and highscore form container -->
-<section id="scoreContainer" class="container">
-  <div id="enterScore">
-    <h2 id="scoreTitle">Score:<span id=score>0</span></h2>
-      <form id="scoreForm">
-        <label id="label" for="username">Initials or Username:</label><br>
-        <input id="username" type="text" autocomplete="username"><br>
-        <button id="submit" onclick="saveLocal()">Submit</button>
-      </form>
-    </div>
-</section>        
+      <section id="scoreContainer" class="container">
+        <div id="enterScore">
+          <h2 id="scoreTitle">Score:<span id=score>0</span></h2>
+            <form id="scoreForm">
+              <label id="label" for="username">Initials or Username:</label><br>
+              <input id="username" type="text" autocomplete="username"><br>
+              <button id="submit" onclick="saveLocal()">Submit</button>
+            </form>
+          </div>
+      </section>        
     <!-- View highscores and clear highscores: taken from bootstrap-->
-    <section id="highscoreModal" class="modal" tabindex="-1">
-      <div id="heroes">
-        <div id="spiel">
-          <div id="highscores">
-            <h5 id="highscoreTitle">Unexploded Users:</h5>
-            <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
-          </div>
-          <div id="modal-body">
-            <p id="highscoreList"></p>
-          </div>
-          <div class="footer" id="modal-footer">
-            <button id="exit" type="button" class="btn btn-secondary" onclick="closeModal()" data-bs-dismiss="modal">Exit</button>
-            <button id="clear" type="button" class="btn btn-primary" onclick="clearSaves()">Clear</button>
+      <section id="highscoreModal" class="modal" tabindex="-1">
+        <div id="heroes">
+          <div id="spiel">
+            <div id="highscores">
+              <h5 id="highscoreTitle">Unexploded Users:</h5>
+              <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+            </div>
+            <div id="modal-body">
+              <p id="highscoreList">
+              
+              </p>
+            </div>
+            <div class="footer" id="modal-footer">
+              <button id="exit" type="button" class="btn btn-secondary" onclick="closeModal()" data-bs-dismiss="modal">Exit</button>
+              <button id="clear" type="button" class="btn btn-primary" onclick="clearSaves()">Clear</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     </main>
 
