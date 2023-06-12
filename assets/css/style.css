@@ -17,31 +17,52 @@ body {
         rgba(212, 0, 255, 0.86)
     ) 
 }
-.navigation {
-    margin-left: 12.5%;
-    background-color: gold;
-    border-radius: 15px;
-    max-width: 75%;
+header {
+    background-color: black;
 }
 
-h1, 
-nav {
+h1 {
+    background-color: gold;
     padding: 10px;
 }
 
-#timer {
-   background-color: black;
-   color: gold;
-   border-radius: 15px;
-   font-size: 25px;
+.timerContainer {
+    display: flex;
+    justify-content: center;
+    background-color: gold;
+    font-size: 25px;
+    width: 100%;
 }
 
-.welcomeContainer {
+#timer {
+    background-color: gold;
+}
+
+#welcomeContainer {
     background-color: black;
     color: white;
     border-radius: 15px;
-    margin: 20%;
+    margin-left: 40%;
+    margin-top: 10%;
+    margin-bottom:10%;
     padding: 20px;
+    width: 20%;
+}
+
+#quizContainer {
+    background-color: black;
+}
+
+/* #scoreContainer {
+
+} */
+
+#highscoreModal {
+    background-color: black;
+    color: gold;
+    width: 33%;
+    height: 33%;
+    border-radius: 15px;
 }
 
 button {

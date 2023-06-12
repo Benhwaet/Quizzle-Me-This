@@ -66,37 +66,55 @@ var quizzles = [
         d: "Button.listenToEvent('click', function())"},
       answer: "c"
   }]
+
+  var questionNum = quizzles.length;
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
-//but is ridiculously long list necessary?
 $(document).ready(function(){
-    // $(".quizContainer").hide();
-    $(".scoreContainer").hide();
-  });//works
+  $(".modal").hide();
+  $("#quizContainer").hide();
+  $("#scoreContainer").hide();
+  $("#highscoreModal").hide()
+});
 
-var quizzleNum = quizzles.length;
-console.log(quizzleNum)
-var welcomeContainer = $(".welcomeContainer");
-var quizTopic = $("#topic");
-var listEl = $("#listEl");
-var quizChoices = $("#choices");
-var quizContainer = $("#quizContainer")
+function viewHighscores() {
+  $("#highscoreModal").show();
+}
 
-var startQuiz = function (event) {
-    // event.preventDefault();
-    welcomeContainer.hide();
-    
-    quizTopic.textContent = '';
-    quizChoices.textContent = '';
-    console.log(quizzles.question)
-    for (var i = 0; i <= quizzles[i].choices.length; i++){
-        // var questionTopic = document.createElement("li");
-        // questionTopic.textContent = questions[i];
-        quizChoices.text(quizzles.choices)
-        
+function startQuiz() {
+  $("#welcomeContainer").hide();
+  $("#quizContainer").show();
+
+  for (var i = 0; i < questionNum; i++) {
+          
+  }
+
+  var timeInterval = setInterval(function () {
+      
+    if (timeLeft >= 1) {
+          timeEl.textContent = timeLeft;
+          timeLeft--;
+        } else {
+          timerEl.textContent = "*BOOM*";
+          document.write("Batman is now dead.")
+          clearInterval(timeInterval);
+          displayMessage();
+        }
+      }, 1000);
     }
 
-}  
-// $("#startBtn").addEventListener("submit", startQuiz());
-// $("#startBtn").addEventListener("dblclick", startQuiz());
-// $("#startBtn").on("submit", startQuiz);
+function nextQuest() {
+  questionNum++;
+}
+
+function saveLocal() {
+  localStorage.setItem("highscores", )
+}
+
+function closeModal() {
+  $("#highscoreModal").hide();
+}
+
+function clearSaves() {
+  localStorage.removeItem("highscores");
+}
