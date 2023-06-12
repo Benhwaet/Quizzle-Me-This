@@ -67,15 +67,54 @@ var quizzles = [
       answer: "c"
   }]
 
+  var questionNum = quizzles.length;
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
-//but is ridiculously long list necessary?
 $(document).ready(function(){
   $(".modal").hide();
   $("#quizContainer").hide();
   $("#scoreContainer").hide();
-  $("#highscor")
-
+  $("#highscoreModal").hide()
 });
 
-v
+function viewHighscores() {
+  $("#highscoreModal").show();
+}
+
+function startQuiz() {
+  $("#welcomeContainer").hide();
+  $("#quizContainer").show();
+
+  for (var i = 0; i < questionNum; i++) {
+          
+  }
+
+  var timeInterval = setInterval(function () {
+      
+    if (timeLeft >= 1) {
+          timeEl.textContent = timeLeft;
+          timeLeft--;
+        } else {
+          timerEl.textContent = "*BOOM*";
+          document.write("Batman is now dead.")
+          clearInterval(timeInterval);
+          displayMessage();
+        }
+      }, 1000);
+    }
+
+function nextQuest() {
+  questionNum++;
+}
+
+function saveLocal() {
+  localStorage.setItem("highscores", )
+}
+
+function closeModal() {
+  $("#highscoreModal").hide();
+}
+
+function clearSaves() {
+  localStorage.removeItem("highscores");
+}

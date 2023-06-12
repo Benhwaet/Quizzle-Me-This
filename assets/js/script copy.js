@@ -54,10 +54,7 @@ $(document).ready(function(){
 
 function startQuiz() {
     $(".welcomeContainer").hide();
-  for (var i = 0; i < questions.length; i++) {
-          
-
-}
+  
 localStorage.setItem("userScore", JSON.stringify(userScore));
 
 var timeInterval = setInterval(function () {
