@@ -66,37 +66,16 @@ var quizzles = [
         d: "Button.listenToEvent('click', function())"},
       answer: "c"
   }]
+
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
 //but is ridiculously long list necessary?
 $(document).ready(function(){
-    // $(".quizContainer").hide();
-    $(".scoreContainer").hide();
-  });//works
+  $(".modal").hide();
+  $("#quizContainer").hide();
+  $("#scoreContainer").hide();
+  $("#highscor")
 
-var quizzleNum = quizzles.length;
-console.log(quizzleNum)
-var welcomeContainer = $(".welcomeContainer");
-var quizTopic = $("#topic");
-var listEl = $("#listEl");
-var quizChoices = $("#choices");
-var quizContainer = $("#quizContainer")
+});
 
-var startQuiz = function (event) {
-    // event.preventDefault();
-    welcomeContainer.hide();
-    
-    quizTopic.textContent = '';
-    quizChoices.textContent = '';
-    console.log(quizzles.question)
-    for (var i = 0; i <= quizzles[i].choices.length; i++){
-        // var questionTopic = document.createElement("li");
-        // questionTopic.textContent = questions[i];
-        quizChoices.text(quizzles.choices)
-        
-    }
-
-}  
-// $("#startBtn").addEventListener("submit", startQuiz());
-// $("#startBtn").addEventListener("dblclick", startQuiz());
-// $("#startBtn").on("submit", startQuiz);
+v

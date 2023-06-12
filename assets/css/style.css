@@ -17,11 +17,10 @@ body {
         rgba(212, 0, 255, 0.86)
     ) 
 }
-.navigation {
-    margin-left: 12.5%;
+header {
     background-color: gold;
     border-radius: 15px;
-    max-width: 75%;
+    width: 100%;
 }
 
 h1, 
@@ -30,13 +29,16 @@ nav {
 }
 
 #timer {
-   background-color: black;
-   color: gold;
-   border-radius: 15px;
-   font-size: 25px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: gold;
+    border-radius: 15px;
+    font-size: 25px;
+    width: 25%;
 }
 
-.welcomeContainer {
+#welcomeContainer {
     background-color: black;
     color: white;
     border-radius: 15px;
