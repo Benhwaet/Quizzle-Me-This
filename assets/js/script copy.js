@@ -47,13 +47,13 @@ var secondsTimer = 30;
 
 
 //Hide everything but static elements, welcome container, and footer when page initializes
-$(document).ready(function(){
+$(function(){
     quizContainer.hide();
     scoreContainer.hide();
   });
 
 function startQuiz() {
-    $(".welcomeContainer").hide();
+    welcomeContainer.hide();
   
 localStorage.setItem("userScore", JSON.stringify(userScore));
 

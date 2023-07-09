@@ -1,6 +1,7 @@
 * {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+    font-weight: bolder;
 }
 /* .hide {
     display: none;
@@ -21,12 +22,29 @@ header {
     background-color: black;
 }
 
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     background-color: gold;
     padding: 10px;
 }
 
-#viewHighscores {
+#batman {
+    position: fixed;
+    height: 50px;
+}
+
+#quizzle {
+    position: relative;
+    height: 100px;
+    display: float-inline;
+}
+
+#highscoreLink {
     font-size: medium;
     font-weight: bolder;
 }
@@ -56,11 +74,10 @@ h1 {
 }
 
 p {
-    padding: 40px;
     font-size: large;
 }
 
-.quizzleMe {
+#quizzleMe {
     color: black;
     background-color: gold;
     width: 100%;

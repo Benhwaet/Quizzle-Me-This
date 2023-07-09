@@ -1,3 +1,58 @@
+// Fetching elements by ID and class to use them as variables using JQuery
+
+//Header and navigation: static elements that remain regardless of webpage state
+const header = $("#header-container") 
+const highscoreLink = $("#highscoreLink");
+//highscoreLink.addEventListener("click", viewHighscores());
+
+//Welcome page container
+const welcomeContainer = $(".welcomeContainer");
+const startBtn = $("#startBtn");
+// start.addEventListener("click", startQuiz());
+
+//Quiz container
+const quizContainer = $("#quizContainer");
+const timerEl = $("#timer");
+let timeEl = $("#time");
+const topic = $("#topicContainer");
+const choices = $("#choicesContainer");
+const nextBtn = $("#nextBtn");
+// nextBtn.addEventListener("click", nextQuest);
+
+let questionsNum = quizContainer.questions.length;
+
+//Results and highscore form container
+const scoreContainer = $("#scoreContainer")
+const userScore = $("#score");
+const nameLabel = $("#enterName");
+const usernameInput = $("#usernameInput");
+const submitBtn = $("#submit");
+//submitBtn.addEventListener("click", submitName());
+
+//View and clear highscores container
+const highscoreModal = $(".highscoreModal");
+const highscores = $(".highscores");
+const scoreList = $("#highscoreList");
+//close button event
+const closeBtn = $(".btn-close");
+closeBtn.addEventListener("click", closeScores());
+//exit button event
+var exitBtn = $(".btn btn-secondary");
+exitBtn.addEventListener("click", exitScores());
+//clear button event
+var clearBtn = $(".btn btn-primary");
+clearBtn.addEventListener("click", clearScores());
+//
+//Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
+var timeLeft = 30;
+var gameScore;
+var gameStop = true;
+var timerInterval;
+var currentQuestion;
+
+
+var secondsTimer = 30;
+
 //Questions array
 var quizzles = [
     {
@@ -7,7 +62,7 @@ var quizzles = [
         b: "String, Number, Undefined, Class", 
         c: "Boolean, Number, String, Defined", 
         d: "String, Boolean, Letter, Number"},
-      answer: "a"
+      answer: "a" 
   },{
       question: "What must be included before a variable's name to declare it as a variable?",
       choices: {
@@ -22,15 +77,15 @@ var quizzles = [
         a: "document.getIdElement", 
         b: "window.getElementId", 
         c: "document.getElementById", 
-        d: "document.writeElementbyId"},
+        d: "document.write.ElementbyId"},
       answer: "c"
   }, {
-      question: "How does one create a new function?",
+      question: "How does one create a new function called myFun?",
       choices: {
-        a: "function = myFunction()", 
-        b: "function(myFunction())", 
-        c: "function: myFunction()", 
-        d: "function myFunction()"},
+        a: "function = myFun()", 
+        b: "function(myFun())", 
+        c: "function: myFun()", 
+        d: "function myFun()"},
       answer: "d"
   }, {
       question: "What must be included before a variable's name to declare it as a variable?",
@@ -47,11 +102,11 @@ var quizzles = [
         a: "expression1 || expression2", 
         b: "expression1 =!= expression2", 
         c: "expression1 && expression2", 
-        d:"expression1 == expression2"},
+        d: "expression1 == expression2"},
       answer: "c"
   }, {
       question:"How does one write an array?",
-      choices:{a: "<'a', 'b', 'c', 'd'>", b: "['a', 'b', 'c', 'd'], c: [a, b, c, d]", d: "(a, b, c, d)"},
+      choices:{a: "<'a', 'b', 'c', 'd'>", b: "['a', 'b', 'c', 'd']", c: "[a, b, c, d]", d: "(a, b, c, d)"},
       answer: "b"
   }, {
       question:"What is the first letter of the Caped Crusader's superhero name?",
@@ -65,29 +120,26 @@ var quizzles = [
         c: "Button.addEventListener('click', function())", 
         d: "Button.listenToEvent('click', function())"},
       answer: "c"
-  }]
+  }];
 
-  //Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
-  var questionNum = quizzles.length;
-  var timeLeft = 30;
-  var gameScore;
-  var gameStop = true;
-  var timerInterval;
-  var userAnswers = [];
-  var currentQuestion = 0;
-
-  var timeEl = $("#time")
+  quizzles[0].choices.a = true;
+  quizzles[1].choices.c = true;
+  quizzles[2].choices.c = true;
+  quizzles[3].choices.d = true;
+  quizzles[4].choices.d = true;
+  quizzles[5].choices.c = true;
+  quizzles[6].choices.c = true;
+  quizzles[7].choices.b = true;
+  quizzles[8].choices.b = true;
+  quizzles[9].choices.c = true;
+ 
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
-$(document).ready(function(){
-  $("#highscoreModal").hide();
-  $("#quizContainer").hide();
-  $("#scoreContainer").hide();
+$(function() {
+  quizContainer.hide();
+  scoreContainer.hide();
+  highscoreModal.hide();
 });
-
-function viewHighscores() {
-  $("#highscoreModal").show();
-}
 
 // //function taken from edX bootcamp class notes
 function countdown() {
@@ -104,30 +156,44 @@ function countdown() {
       timeLeft--;
     } else if (timeLeft === 0) {
       // Once `timeLeft` gets to 0, set `timeEl` to an empty string
-      $("#time").text("*BOOM*");
+      $("#time").text("*BOOM* Batman is dead.");
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
     }
   }, 1000);
 }
 
-function startQuiz() {
+//hide unnecessary containers and show quiz, initiate countdown
+var startQuiz = function() {
   $("#welcomeContainer").hide();
+  // $("#highscoreModal").hide();
+  // $("#scoreContainer").hide();
   $("#quizContainer").show();
   countdown();
-  // timeInterval();
-  console.log(quizzles[0].question)
+}
 
-// for (var i = 0; i < questions[currentquestion].choices.length; i++) {
+ var quizBag = 
+ `<h2 id="timer" class="timer p-3">Tic-Toc: <span id="time"></span></h2>
+  <h3 id-"topic-container" class="container">${quizzles[i].question}</h2>
+  <ol id="choices-container" class="container">
+      <li><button id="choices_a" type="button">"${quizzles[i].choices.a}"</button></li>
+      <li><button id="choices_b" type="button">"${quizzles[i].choices.b}"</button></li>
+      <li><button id="choices_c" type="button">"${quizzles[i].choices.c}"</button></li>
+      <li><button id="choices_d" type="button">"${quizzles[i].choices.d}"</button></li>
+  </ol>
+console.log(quizBag)
 
-$(".topic").text(quizzles[currentQuestion].question);
-  
-var choice_a = $("<button id='choice-a' class='choice'>").text(quizzles[currentQuestion].choices.a);
-var choice_b = $("<button id='choice-b' class='choice'>").text(quizzles[currentQuestion].choices.b);
-var choice_c = $("<button id='choice-c' class='choice'>").text(quizzles[currentQuestion].choices.c);
-var choice_d = $("<button id='choice-d' class='choice'>").text(quizzles[currentQuestion].choices.d);
+quizContainer.insertAdjacentHtml(quizBag);
+// forEach. or FOr loop (look up again)
 
-$(".list").append(choice_a, choice_b, choice_c, choice_d);
+// $(".topic").text(quizzles[currentQuestion].question);
+//   console.log(quizzles[currenQuestion])
+// var choice_a = $("<button id='choice-a' class='choice'>").text(quizzles[currentQuestion].choices.a);
+// var choice_b = $("<button id='choice-b' class='choice'>").text(quizzles[currentQuestion].choices.b);
+// var choice_c = $("<button id='choice-c' class='choice'>").text(quizzles[currentQuestion].choices.c);
+// var choice_d = $("<button id='choice-d' class='choice'>").text(quizzles[currentQuestion].choices.d);
+
+// $(".list").append(choice_a, choice_b, choice_c, choice_d);
 
 
   // // testing condtion 
@@ -138,7 +204,9 @@ $(".list").append(choice_a, choice_b, choice_c, choice_d);
   //   // show highscores modal ... etc..
   // }
 // }
-};  
+const viewHighscores = function() {
+  $("#highscoreModal").show();
+}
 
 function nextQuest() {
   currentQuestion++;
@@ -150,7 +218,6 @@ function saveLocal() {
 
 function closeModal() {
   $("#highscoreModal").hide();
-  
 }
 
 $("body").on("click", closeModal);

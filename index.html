@@ -1,91 +1,100 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quizznizzle?!</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quizznizzle?!</title>
+  <!-- jquery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-   </head>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
 <body>
   <!-- header to remain visible at all time except when opening highscore modal-->
-  <header class="heading width='100%'">
+  <header id="header-container" class="container width='100%'">
     <h1><strong>Caped Crusader Quiz Quest</strong></h1>
     <div class="imageContainer p-4">
       <img class="headerimage" id="batman" src="assets/images/batman-6061503_1280.png" height=100px>
-      <img class="headerimage"id="quizzle" src="assets/images/Quizzle.png" height="50px">
+      <img class="headerimage" id="quizzle" src="assets/images/negativeSpaceQuestion.png" height="100px">
     </div>
     <div>
-      <button class="button m-3" id="viewHighscores" onclick="viewHighscores()">Quizzle Masters</button>
+      <button id="highscoreLink" class="button m-3" onclick="viewHighscores()">The Unexploded</button>
     </div>
-  </header> 
+  </header>
 
   <main>
-  <!-- Welcome page container -->
-      <section id="welcomeContainer" class="welcome container">
-        <h2 class="quizzleMe">Quizzle me this, Batman!</h2>
-        <p>Holy-Quizzoli! The Quizzler has struck again! They have infiltrated the Bat Cave and planted a Tic Toc
-            Time Bomb (patent pending)! 
-            The only way to disarm this devious device is to solve the 
-            Quizzler's quiz questions! Can our erstwhile heroes answer all Quizzler's questions before 
-            their time runs out!?
-            Stay tuned for the explosive conclusion, or click on the button below to help the caped 
-            crusader cruise through the quiz! </p>
-        <button id="startBtn" type="submit" onclick="startQuiz()">Tic Toc, Beat the Clock!</button>
-      </section> 
-<!-- Quiz container -->
-      <section id="quizContainer" class="quiz container">
-        <h2 id="timer" class="timer p-3">Tic-Toc: <span id="time"></span></h2> 
-        <p id="topicContainer" class="topic">
-        </p>
-        <div id="choicesContainer" class="choices">
-          <ul class="list" id="options">
-          </ul>
-        </div>
-        <div class="moveOn">
-          <button type="button" class="nextQuest" onclick="nextQuest()">Next</button>
-        </div>
-      </section>
-   <!-- Results and highscore form container -->
-      <section id="scoreContainer" class="container">
-        <div id="enterScore">
-          <h2 id="scoreTitle">Score:<span id=score>0</span></h2>
-            <form id="scoreForm">
-              <label id="label" for="username">Initials or Username:</label><br>
-              <input id="username" type="text" autocomplete="username"><br>
-              <button id="submit" onclick="saveLocal()">Submit</button>
-            </form>
-          </div>
-      </section>        
+    <!-- Welcome page container -->
+    <section id="welcomeContainer">
+      <h2 id="quizzleMe" class="header">Quizzle me this, Batman!</h2>
+      <p>Holy-Quizzoli! The Quizznizzler has struck again! They have infiltrated the Bat Cave and planted a Tic-Toc
+        Time-Bomb (patent pending)!</p>
+      <p>The only way to disarm this devious device is to solve the
+        quiz questions! Can our erstwhile heroes answer all Quizzler's
+        questions before their time runs out!?</p>
+      <p>Stay tuned for the explosive conclusion, or click on the button below to help the caped
+        crusader cruise through the quiz!</p>
+      <button id="startBtn" type="submit" onclick="startQuiz()">Tic Toc, Beat the Clock!</button>
+    </section>
+
+    <!-- Quiz container -->
+    <section id="quizContainer" class="container">
+      <h2 id="timer" class="timer p-3">Tic-Toc: <span id="time"></span></h2>
+      <h3 id="topicContainer" class="container"></h3>
+      <ul id="choicesContainer" class="container" >
+       
+      </ul>
+      <div>
+        <button type="button" id="nextBtn" onclick="nextQuest()">Next</button>
+      </div>
+    </section>
+
+    <!-- Results and highscore form container -->
+    <section id="scoreContainer" class="container">
+      <div id="enterScore">
+        <h2 id="scoreTitle">Score:<span id=score>0</span></h2>
+        <form id="scoreForm">
+          <label id="label" for="username">Initials or Username:</label><br>
+          <input id="usernameInput" type="text" autocomplete="username"><br>
+          <button id="submit" onclick="saveLocal()">Submit</button>
+        </form>
+      </div>
+    </section>
     <!-- View highscores and clear highscores: taken from bootstrap-->
-      <section id="highscoreModal" class="modal" tabindex="-1">
-            <div>
-              <h5 id="highscoreTitle">Unexploded Users:</h5>
-              <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
-            </div>
-            <div id="modal-body">
-              <p id="highscoreList">
-              </p>
-            </div>
-            <div id="modal-footer">
-              <button id="exit" type="button" class="btn btn-secondary" onclick="closeModal()" data-bs-dismiss="modal">Exit</button>
-              <button id="clear" type="button" class="btn btn-primary" onclick="clearSaves()">Clear</button>
-            </div>
-      </section>
+    <section id="highscoreModal" class="modal container" tabindex="-1">
+      <div>
+        <h5 id="highscoreTitle">Unexploded Users:</h5>
+        <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close"
+          onclick="closeModal()"></button>
+      </div>
+      <div id="modal-body">
+        <p id="highscoreList">
+        </p>
+      </div>
+      <div id="modal-footer">
+        <button id="exit" type="button" class="btn btn-secondary" onclick="closeModal()"
+          data-bs-dismiss="modal">Exit</button>
+        <button id="clear" type="button" class="btn btn-primary" onclick="clearSaves()">Clear</button>
+      </div>
+    </section>
 
-    </main>
+  </main>
 
-    <footer>
-        <h3>*DRAMATIC QUIZ MUSIC*</h3>
-        <h4>&copy; BenHwaet 2023</h4>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
+  <footer>
+    <h3>*DRAMATIC QUIZ MUSIC*</h3>
+    <h4>&copy; BenHwaet 2023</h4>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
+  <!-- <script type="module" src="./assets/js/variables.js"></script> -->
+  <script type="module" src="./assets/js/script.js"></script>
+
+</body>
 
 </html>
