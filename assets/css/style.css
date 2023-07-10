@@ -1,25 +1,32 @@
 * {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    font-weight: bolder;
 }
+
 /* .hide {
     display: none;
 } */
+
 body {
-    background-image: linear-gradient(
-        to top,
-        rgba(255, 0, 0, 0.86),
-        rgba(255, 100, 0, 0.86),
-        rgba(255, 200, 0, 0.86),
-        rgba(72, 255, 0, 0.8),
-        rgba(0, 136, 255, 0.86),
-        rgba(38, 0, 255, 0.86),
-        rgba(212, 0, 255, 0.86)
-    ) 
+    background-image: linear-gradient(to top,
+            rgba(255, 0, 0, 0.86),
+            rgba(255, 100, 0, 0.86),
+            rgba(255, 200, 0, 0.86),
+            rgba(72, 255, 0, 0.8),
+            rgba(0, 136, 255, 0.86),
+            rgba(38, 0, 255, 0.86),
+            rgba(212, 0, 255, 0.86))
 }
+
 header {
-    background-color: black;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 .imageContainer {
@@ -29,52 +36,74 @@ header {
 }
 
 h1 {
-    background-color: gold;
     padding: 10px;
+    display: absolute;
+    width: 100%;
 }
 
 #batman {
-    position: fixed;
-    height: 50px;
+    position: absolute;
+    height: 100px;
 }
 
 #quizzle {
     position: relative;
     height: 100px;
     display: float-inline;
+    border-radius: 100px;
+    width: 200px;
+    background: linear-gradient(80deg, red, orange, yellow, green, violet, red);
+    border: 3px solid purple;
+    opacity: 80%;
+}
+
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #highscoreLink {
     font-size: medium;
     font-weight: bolder;
+    display: absolute;
+    margin-left: 80px;
 }
 
-.timerContainer {
-    display: flex;
+#timer {
+    display: absolute;
     justify-content: center;
-    background-color: gold;
     font-size: 25px;
-    width: 100%;
+    color: purple;
+    border: 3px solid purple;
+    margin-right: 80px;
+    border-radius: 10px;
+    background: linear-gradient(80deg, red, orange, yellow, green, violet, red);
 }
 
 #welcomeContainer {
     display: relative;
     background-color: black;
     color: white;
-    /* border-radius: 15px; */
-    margin-left: 26%;
+    border-radius: 100px;
     /* margin-right: 26%; */
-    margin-top: 10%;
-    margin-bottom:10%;
+    margin-bottom: 8%;
     padding-bottom: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 45%;
+    margin-left: 10%;
+    width: 80%;
     font-size: larger;
 }
 
 p {
     font-size: large;
+    padding: 10px;
+    width: 45%;
+    margin-left: 27%;
+}
+
+#startBtn {
+    font-size: medium;
+    font-weight: bolder;
 }
 
 #quizzleMe {
@@ -88,31 +117,27 @@ p {
     border-top-right-radius: 20px; */
 }
 
-#startBtn {
-    font-size: medium;
-    font-weight: bolder;
-}
-
-#timer {
+#topic-container {
+    display: absolute;
     background-color: gold;
-    /* border-top-right-radius: 30px;
-    border-top-left-radius: 30px; */
     color: black;
-}
-
-.topic {
+    padding: 15px;
+    margin-bottom: 50px;
     font-size: xx-large;
+    border-radius: 110px;
+    width: 100%;
 }
 
 #quizContainer {
+    display: absolute;
     background-color: black;
-    color: gold;
-    width: 40%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    padding: 5px;
-    align-items: center;
-    /* border-radius: 30px; */
+    color: white;
+    border-radius: 100px;
+    margin-bottom: 8%;
+    padding-bottom: 50px;
+    margin-left: 10%;
+    width: 75%;
+    font-size: larger;
 }
 
 #choice_i {
@@ -120,7 +145,6 @@ p {
 }
 
 .choice {
-    margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bolder;
     font-style: oblique;
@@ -130,12 +154,17 @@ p {
 .list {
     list-style: none;
 }
+
 /* #scoreContainer {
 
 } */
 #startBtn {
     font-size: larger;
     font-weight: bold;
+}
+
+#choice_a, #choice_b, #choice_c, #choice_d {
+    background-color: white;
 }
 
 #highscoreModal {
@@ -146,12 +175,33 @@ p {
     /* border-radius: 15px; */
 }
 
-button {
+#nextBtn {
+    margin-top: 20px;
+    width: 200px;
+    border-radius: 0px;
+    border: 5px dashed gold;
+    background-color: black;
+    color: gold;
+}
+
+#scoreContainer {
+    display: relative;
+    background-color: black;
+    color: white;
+    border-radius: 100px;
+    margin-bottom: 8%;
+    padding: 30px;
+    margin-left: 10%;
+    width: 75%;
+    font-size: larger;
+}
+
+button { 
     background-color: gold;
-    border-radius: 20px;
     color: black;
     padding: 10px;
     margin: 10px;
+    border-radius: 15px;
 }
 
 footer {
@@ -159,4 +209,5 @@ footer {
     color: gold;
     justify-content: flex-end;
     margin-bottom: 0%;
+    padding: 20px;
 }
