@@ -1,120 +1,277 @@
-//Questions array
-var quizzles = [
-    {
-      question: "What are the primitive data types in Javascript?",
-      choices: {
-        a: "Boolean, String, Number, Undefined", 
-        b: "String, Number, Undefined, Class", 
-        c: "Boolean, Number, String, Defined", 
-        d: "String, Boolean, Letter, Number"},
-      answer: "a"
-  },{
-      question: "What must be included before a variable's name to declare it as a variable?",
-      choices: {
-        a: "variable", 
-        b: "vari", 
-        c: "var", 
-        d: "vbl"},
-      answer: "c"
-  },{
-      question: "How does one fetch an element by id through DOM?",
-      choices: {
-        a: "document.getIdElement", 
-        b: "window.getElementId", 
-        c: "document.getElementById", 
-        d: "document.writeElementbyId"},
-      answer: "c"
-  }, {
-      question: "How does one create a new function?",
-      choices: {
-        a: "function = myFunction()", 
-        b: "function(myFunction())", 
-        c: "function: myFunction()", 
-        d: "function myFunction()"},
-      answer: "d"
-  }, {
-      question: "What must be included before a variable's name to declare it as a variable?",
-      choices: {
-        a:"var", b: "let", c: "const", d: "any of the above"},
-      answer: "d"
-  }, {
-      question:"How can one determine if there is strict equality between variables 'a' and 'b'?",
-      choices:{a: "a == b", b: "a =!= b", c: "a === b", d: "a = b"},
-      answer: "c"
-  }, {
-      question:"How can one identify if both expressions are true?",
-      choices:{
-        a: "expression1 || expression2", 
-        b: "expression1 =!= expression2", 
-        c: "expression1 && expression2", 
-        d:"expression1 == expression2"},
-      answer: "c"
-  }, {
-      question:"How does one write an array?",
-      choices:{a: "<'a', 'b', 'c', 'd'>", b: "['a', 'b', 'c', 'd'], c: [a, b, c, d]", d: "(a, b, c, d)"},
-      answer: "b"
-  }, {
-      question:"What is the first letter of the Caped Crusader's superhero name?",
-      choices:{a: "a", b: "b", c: "c", d: "d"},
-      answer: "b"
-  }, {
-      question:"How can one associate a response to an event, like a button being clicked?",
-      choices:{
-        a: "Button.listenForEvent('click', function())", 
-        b: "Button.EventListener('click', function())", 
-        c: "Button.addEventListener('click', function())", 
-        d: "Button.listenToEvent('click', function())"},
-      answer: "c"
-  }]
+// Fetching elements by ID and class to use them as variables using JQuery
 
-  var questionNum = quizzles.length;
+//Header and navigation: static elements that remain regardless of webpage state
+const documentHtml = $(document);
+const header = $("#header-container")
+const imageContainer = $("#image-container")
+const highscoreBtn = $("#highscoreBtn");
+const timerEl = $("#timer");
+let timeEl = $("#time");
+
+const welcomeContainer = $("#welcomeContainer");
+const startBtn = $("#startBtn");
+
+//Quiz container
+const quizContainer = $("#quizContainer");
+
+//Results and user entry container
+const scoreContainer = $("#scoreContainer")
+const userScore = $("#score").text();
+const nameLabel = $("#enterName");
+const usernameInput = $("#usernameInput");
+const submitBtn = $("#submit");
+
+//Highscores container
+const highscoreContainer = $(".highscore-container");
+const highscoreList = $(".highscore-list");
+const scoreList = $("#highscoreList");
+const closeBtn = $("#btn-close");
+const exitBtn = $("#btn-exit");
+const clearBtn = $("#btn-clear");
+
+//Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
+let timeLeft = 30;
+let timerInterval;
+let i = 0;
+let currentQuizzle = i++;
+console.log(currentQuizzle);
+let secondsTimer = 30;
+
+//Questions array
+const quizzles = [
+  {
+    question: "What are the primitive data types in Javascript?",
+    choices: {
+      a: 'Boolean, String, Number, Undefined',
+      b: 'String, Number, Undefined, Class',
+      c: 'Boolean, Number, String, Defined',
+      d: 'String, Boolean, Letter, Number'
+    },
+    answer: "a"
+  }, {
+    question: "What must be included before a variable's name to declare it as a variable?",
+    choices: {
+      a: "variable",
+      b: "vari",
+      c: "var",
+      d: "vbl"
+    },
+    answer: "c"
+  }, {
+    question: "How does one fetch an element by id through DOM?",
+    choices: {
+      a: "document.getIdElement",
+      b: "window.getElementId",
+      c: "document.getElementById",
+      d: "document.write.ElementbyId"
+    },
+    answer: "c"
+  }, {
+    question: "How does one create a new function called myFun?",
+    choices: {
+      a: "function = myFun()",
+      b: "function(myFun())",
+      c: "function: myFun()",
+      d: "function myFun()"
+    },
+    answer: "d"
+  }, {
+    question: "What must be included before a variable's name to declare it as a variable?",
+    choices: {
+      a: "var", b: "let", c: "const", d: "any of the above"
+    },
+    answer: "d"
+  }, {
+    question: "How can one determine if there is strict equality between variables 'a' and 'b'?",
+    choices: { a: "a == b", b: "a =!= b", c: "a === b", d: "a = b" },
+    answer: "c"
+  }, {
+    question: "How can one identify if both expressions are true?",
+    choices: {
+      a: "expression1 || expression2",
+      b: "expression1 =!= expression2",
+      c: "expression1 && expression2",
+      d: "expression1 == expression2"
+    },
+    answer: "c"
+  }, {
+    question: "How does one write an array?",
+    choices: { a: "<'a', 'b', 'c', 'd'>", b: "['a', 'b', 'c', 'd']", c: "[a, b, c, d]", d: "(a, b, c, d)" },
+    answer: "b"
+  }, {
+    question: "What is the first letter of the Caped Crusader's superhero name?",
+    choices: { a: "A", b: "B", c: "C", d: "D" },
+    answer: "B"
+  }, {
+    question: "How can one associate a response to an event, like a button being clicked?",
+    choices: {
+      a: "Button.listenForEvent('click', function())",
+      b: "Button.EventListener('click', function())",
+      c: "Button.addEventListener('click', function())",
+      d: "Button.listenToEvent('click', function())"
+    },
+    answer: "c"
+  }];
+
+const quizNum = quizzles.length;
+console.log(quizNum);
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
-$(document).ready(function(){
-  $(".modal").hide();
-  $("#quizContainer").hide();
-  $("#scoreContainer").hide();
-  $("#highscoreModal").hide()
+$(function () {
+  quizContainer.hide();
+  nextBtn.hide();
+  scoreContainer.hide();
+  highscoreContainer.hide();
 });
 
-function viewHighscores() {
-  $("#highscoreModal").show();
+imageContainer.on("click", function () {
+  location.reload();
+})
+
+// function viewHighscores() {
+//   welcomeContainer.hide();
+//   quizContainer.hide();
+//   nextBtn.hide();
+//   scoreContainer.hide();
+//   highscoreContainer.show();
+// };
+
+//function taken from edX bootcamp class notes
+function countdown() {
+  let timeLeft = 100;
+
+  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  var timeInterval = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (timeLeft >= 1) {
+      // Set the `textContent` of `timeEl` to show the remaining seconds
+      timeEl.text(timeLeft);  // --> jQuery Version
+      // Decrement `timeLeft` by 1
+      timeLeft--;
+    } else if (timeLeft === 0) {
+      // Once `timeLeft` gets to 0, set `timeEl` to an empty string
+      timeEl.text("X_X");
+      // found on stackoverflow by @adeneo 
+      //<https://stackoverflow.com/questions/18708439/show-a-specific-image-on-click>
+      const BOOM = `<img id="KABOOM" class="fullImage" src="assets/images/BOOM!!! (3).png" alt="BOOM! Batman is dead." onclick="location.reload()"/>`
+        quizContainer.before(BOOM);
+        quizContainer.hide();
+
+      // Use `clearInterval()` to stop the timer
+      clearInterval(timeInterval);
+    }
+  }, 1000);
 }
 
-function startQuiz() {
-  $("#welcomeContainer").hide();
-  $("#quizContainer").show();
+//Quiz container
+const topic = $("#topicContainer");
+const choices = $("#choicesContainer");
+const quizButtons = $(".quiz-button")
+const choiceA = $("#choice_a")
+const choiceB = $("#choice_b")
+const choiceC = $("#choice_c")
+const choiceD = $("#choice_d")
+const nextBtn = $("#nextBtn");
+const button = $("button")
 
-  for (var i = 0; i < questionNum; i++) {
-          
-  }
+//hide unnecessary containers and show quiz, initiate countdown
+startBtn.on("click", function () {
+  welcomeContainer.hide();
+  quizContainer.show();
+  nextBtn.show();
 
-  var timeInterval = setInterval(function () {
-      
-    if (timeLeft >= 1) {
-          timeEl.textContent = timeLeft;
-          timeLeft--;
-        } else {
-          timerEl.textContent = "*BOOM*";
-          document.write("Batman is now dead.")
-          clearInterval(timeInterval);
-          displayMessage();
-        }
-      }, 1000);
+  let i = 0;
+
+  let quizBag =
+    `<div id="quiz-box" class="container">
+          <h3 id="topic-container" class="container">${quizzles[i].question}</h3>
+          <ol id="choices-container" class="container list">
+              <li><button id="choice_a" class="quiz-button" type="button">${quizzles[i].choices.a}</button></li>
+              <li><button id="choice_b" class="quiz-button" type="button">${quizzles[i].choices.b}</button></li>
+              <li><button id="choice_c" class="quiz-button" type="button">${quizzles[i].choices.c}</button></li>
+              <li><button id="choice_d" class="quiz-button" type="button">${quizzles[i].choices.d}</button></li>
+          </ol>
+      </div>`
+
+  countdown();
+
+  quizContainer.prepend(quizBag);
+  
+  //goes to next question and presents username entry form and score at the end.
+  nextBtn.on("click", function () {
+    let quizBox = $("#quiz-box");
+
+    quizBox.remove();
+    i++;
+
+    if (i < quizNum) {
+
+      let quizBag =
+        `<div id="quiz-box" class="container">
+        <h3 id="topic-container" class="container">${quizzles[i].question}</h3>
+        <ol id="choices-container" class="container list">
+            <li><button id="choice_a" class="quiz-button" type="button">${quizzles[i].choices.a}</button></li>
+            <li><button id="choice_b" class="quiz-button" type="button">${quizzles[i].choices.b}</button></li>
+            <li><button id="choice_c" class="quiz-button" type="button">${quizzles[i].choices.c}</button></li>
+            <li><button id="choice_d" class="quiz-button" type="button">${quizzles[i].choices.d}</button></li>
+        </ol>
+    </div>`
+
+      quizContainer.prepend(quizBag);
+    } else if (i = quizNum) {
+      quizContainer.hide();
+      timerEl.hide();
+      scoreContainer.show();
     }
 
-function nextQuest() {
-  questionNum++;
-}
+  })
+});
 
-function saveLocal() {
-  localStorage.setItem("highscores", )
-}
 
-function closeModal() {
-  $("#highscoreModal").hide();
-}
+const choicesContainer = $("#choices-container");
 
-function clearSaves() {
-  localStorage.removeItem("highscores");
+quizButtons.on("click", function(event){
+  console.log("broooo!");
+  console.log(event);
+});
+
+
+highscoreBtn.on("click", function() {
+  welcomeContainer.hide();
+  quizContainer.hide();
+  nextBtn.hide();
+  scoreContainer.hide();
+  highscoreContainer.show();
+});
+
+submitBtn.on("click", function (event) {
+  event.preventDefault();
+
+  let username = $("#usernameInput").val();
+   
+
+  localStorage.setItem(userScore, username)
+  
+
+  highscoreContainer.show();
 }
+);
+//close Container by clicking outside frame
+$("body").on("click", function () {
+  highscoreContainer.hide();
+});
+
+//close button event
+closeBtn.on("click", function () {
+  highscoreContainer.hide();
+});
+
+//exit button event
+exitBtn.on("click", function () {
+  highscoreContainer.hide();
+});
+
+//clear button event
+// clearBtn.on("click", function () {
+//   localStorage.removeItem("highscoreList");
+// });

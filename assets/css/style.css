@@ -1,59 +1,169 @@
 * {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
+
 /* .hide {
     display: none;
 } */
+
 body {
-    background-image: linear-gradient(
-        to top,
-        rgba(255, 0, 0, 0.86),
-        rgba(255, 100, 0, 0.86),
-        rgba(255, 200, 0, 0.86),
-        rgba(72, 255, 0, 0.8),
-        rgba(0, 136, 255, 0.86),
-        rgba(38, 0, 255, 0.86),
-        rgba(212, 0, 255, 0.86)
-    ) 
+    background-image: linear-gradient(0deg,
+            rgba(255, 0, 0, 0.86),
+            rgba(255, 100, 0, 0.86),
+            rgba(255, 200, 0, 0.86),
+            rgba(72, 255, 0, 0.8),
+            rgba(0, 136, 255, 0.86),
+            rgba(38, 0, 255, 0.86),
+            rgba(212, 0, 255, 0.86))
 }
+
+button { 
+    background-color: gold;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
 header {
-    background-color: black;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+#imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    background-color: gold;
     padding: 10px;
-}
-
-.timerContainer {
-    display: flex;
-    justify-content: center;
-    background-color: gold;
-    font-size: 25px;
+    display: absolute;
     width: 100%;
 }
 
+#batman {
+    position: absolute;
+    height: 100px;
+    width: 200px;
+}
+
+#quizzle {
+    position: relative;
+    height: 100px;
+    display: float-inline;
+    border-radius: 100px;
+    width: 200px;
+    background: linear-gradient(80deg, red, orange, yellow, green, violet, red);
+    border: 3px solid purple;
+    opacity: 80%;
+}
+
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#highscoreBtn {
+    font-size: medium;
+    font-weight: bolder;
+    display: absolute;
+    border-radius: 0;
+}
+
 #timer {
-    background-color: gold;
+    display: absolute;
+    justify-content: center;
+    font-size: 25px;
+    color: purple;
+    border: 3px solid purple;
+    border-radius: 10px;
+    background: linear-gradient(60deg, red, orange, yellow, green, violet, red);
 }
 
 #welcomeContainer {
+    display: relative;
     background-color: black;
     color: white;
-    border-radius: 15px;
-    margin-left: 40%;
-    margin-top: 10%;
-    margin-bottom:10%;
+    border-radius: 100px;
+    /* margin-right: 26%; */
+    margin-bottom: 8%;
+    padding-bottom: 50px;
+    margin-left: 10%;
+    width: 80%;
+    font-size: larger;
+}
+
+p {
+    font-size: large;
+    padding: 10px;
+    width: 45%;
+    margin-left: 27%;
+}
+
+#startBtn {
+    font-size: medium;
+    font-weight: bolder;
+}
+
+#quizzleMe {
+    color: black;
+    background-color: gold;
+    width: 100%;
+    font-weight: bolder;
+    font-style: italic;
     padding: 20px;
-    width: 20%;
+    /* border-top-left-radius: 20px;
+    border-top-right-radius: 20px; */
+}
+
+#topic-container {
+    display: absolute;
+    background-color: gold;
+    color: black;
+    padding: 15px;
+    margin-bottom: 50px;
+    font-size: xx-large;
+    border-radius: 110px;
+    width: 100%;
 }
 
 #quizContainer {
+    display: absolute;
     background-color: black;
+    color: white;
+    border-radius: 100px;
+    margin-bottom: 8%;
+    padding-bottom: 50px;
+    margin-left: 10%;
+    width: 75%;
+    font-size: larger;
 }
 
-/* #scoreContainer {
+.list {
+    list-style: none;
+}
+
+#scoreContainer {
+    background-color: black;
+    color: gold;
+    
+}
+
+#startBtn {
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* #choice_a, #choice_b, #choice_c, #choice_d {
 
 } */
 
@@ -62,18 +172,40 @@ h1 {
     color: gold;
     width: 33%;
     height: 33%;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
 
-button {
+#nextBtn {
+    margin-top: 20px;
+    width: 200px;
+    border-radius: 0px;
+    border: 5px dashed gold;
+    background-color: black;
+    color: gold;
+}
+
+#scoreContainer {
+    display: relative;
+    background-color: black;
+    color: white;
+    border-radius: 100px;
+    margin-bottom: 8%;
+    padding: 30px;
+    margin-left: 10%;
+    width: 75%;
+    font-size: larger;
+}
+
+#submit {
     background-color: gold;
-    border-radius: 20px;
     color: black;
 }
+
 
 footer {
     background-color: black;
     color: gold;
     justify-content: flex-end;
-    margin-bottom: 0;
+    margin-bottom: 0%;
+    padding: 20px;
 }
