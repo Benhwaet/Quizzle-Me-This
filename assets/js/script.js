@@ -1,12 +1,13 @@
 // Fetching elements by ID and class to use them as variables using JQuery
 
 //Header and navigation: static elements that remain regardless of webpage state
+const documentHtml = $(document);
 const header = $("#header-container")
-const highscoreLink = $("#highscoreLink");
+const imageContainer = $("#image-container")
+const highscoreBtn = $("#highscoreBtn");
 const timerEl = $("#timer");
 let timeEl = $("#time");
 
-//Welcome page container
 const welcomeContainer = $("#welcomeContainer");
 const startBtn = $("#startBtn");
 
@@ -15,13 +16,13 @@ const quizContainer = $("#quizContainer");
 
 //Results and user entry container
 const scoreContainer = $("#scoreContainer")
-const userScore = $("#score");
+const userScore = $("#score").text();
 const nameLabel = $("#enterName");
 const usernameInput = $("#usernameInput");
 const submitBtn = $("#submit");
 
 //Highscores container
-const highscoreModal = $(".highscoreModal");
+const highscoreModal = $(".highscore-modal");
 const highscores = $(".highscores");
 const scoreList = $("#highscoreList");
 const closeBtn = $("#btn-close");
@@ -30,10 +31,10 @@ const clearBtn = $("#btn-clear");
 
 //Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
 let timeLeft = 30;
-let gameScore;
 let timerInterval;
 let i = 0;
-
+let currentQuizzle = i++;
+console.log(currentQuizzle);
 let secondsTimer = 30;
 
 //Questions array
@@ -99,8 +100,8 @@ const quizzles = [
     answer: "b"
   }, {
     question: "What is the first letter of the Caped Crusader's superhero name?",
-    choices: { a: "a", b: "b", c: "c", d: "d" },
-    answer: "b"
+    choices: { a: "A", b: "B", c: "C", d: "D" },
+    answer: "B"
   }, {
     question: "How can one associate a response to an event, like a button being clicked?",
     choices: {
@@ -114,18 +115,6 @@ const quizzles = [
 
 const quizNum = quizzles.length;
 console.log(quizNum);
-
-// quizzles[0].choices.a = true;
-// quizzles[1].choices.c = true;
-// quizzles[2].choices.c = true;
-// quizzles[3].choices.d = true;
-// quizzles[4].choices.d = true;
-// quizzles[5].choices.c = true;
-// quizzles[6].choices.c = true;
-// quizzles[7].choices.b = true;
-// quizzles[8].choices.b = true;
-// quizzles[9].choices.c = true;
-
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
 $(function () {
@@ -135,14 +124,22 @@ $(function () {
   highscoreModal.hide();
 });
 
-highscoreLink.on("click", function () {
-  highscoreModal.show();
-});
+imageContainer.on("click", function () {
+  location.reload();
+})
+
+// function viewHighscores() {
+//   welcomeContainer.hide();
+//   quizContainer.hide();
+//   nextBtn.hide();
+//   scoreContainer.hide();
+//   highscoreModal.show();
+// };
 
 //function taken from edX bootcamp class notes
 function countdown() {
-  let timeLeft = 30;
-  console.log(timeEl);
+  let timeLeft = 2;
+
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
@@ -153,7 +150,13 @@ function countdown() {
       timeLeft--;
     } else if (timeLeft === 0) {
       // Once `timeLeft` gets to 0, set `timeEl` to an empty string
-      timeEl.text("*BOOM* Batman is dead.");
+      timeEl.text("X_X");
+      // found on stackoverflow by @adeneo 
+      //<https://stackoverflow.com/questions/18708439/show-a-specific-image-on-click>
+      const BOOM = `<img id="KABOOM" class="fullImage" src="assets/images/BOOM!!! (3).png" alt="BOOM! Batman is dead." onclick="location.reload()"/>`
+        quizContainer.before(BOOM);
+        quizContainer.hide();
+
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
     }
@@ -176,107 +179,101 @@ startBtn.on("click", function () {
   quizContainer.show();
   nextBtn.show();
 
-  if (i < quizNum) {
+  let i = 0;
 
-    let quizBag =
-      `<div id="quiz-box" class="container">
-        <h3 id="topic-container" class="container">${quizzles[i].question}</h3>
-        <ol id="choices-container" class="container list">
-            <li><button id="choice_a" class="quiz-button" type="button">"${quizzles[i].choices.a}"</button></li>
-            <li><button id="choice_b" class="quiz-button" type="button">"${quizzles[i].choices.b}"</button></li>
-            <li><button id="choice_c" class="quiz-button" type="button">"${quizzles[i].choices.c}"</button></li>
-            <li><button id="choice_d" class="quiz-button" type="button">"${quizzles[i].choices.d}"</button></li>
-        </ol>
-    </div>`
-
-    quizContainer.prepend(quizBag);
-    } else if (i = quizNum){
-        quizContainer.hide();
-        timerEl.hide();
-        scoreContainer.show();
-    }
-  
+  let quizBag =
+    `<div id="quiz-box" class="container">
+          <h3 id="topic-container" class="container">${quizzles[i].question}</h3>
+          <ol id="choices-container" class="container list">
+              <li><button id="choice_a" class="quiz-button" type="button">${quizzles[i].choices.a}</button></li>
+              <li><button id="choice_b" class="quiz-button" type="button">${quizzles[i].choices.b}</button></li>
+              <li><button id="choice_c" class="quiz-button" type="button">${quizzles[i].choices.c}</button></li>
+              <li><button id="choice_d" class="quiz-button" type="button">${quizzles[i].choices.d}</button></li>
+          </ol>
+      </div>`
 
   countdown();
 
   quizContainer.prepend(quizBag);
+  console.log(choiceA)
 
-  quizButtons.on("click", function(){
-    if (quizButtons.innerText === quizzles.question[i])
-  })
+  //detect correct and incorrect answers, adjust score and time accordingly
+ 
 
-});
-
-  //go to next question
+  //goes to next question and presents username entry form and score at the end.
   nextBtn.on("click", function () {
     let quizBox = $("#quiz-box");
 
     quizBox.remove();
     i++;
 
-    
-    
-    console.log(quizzles[0].a)
+    if (i < quizNum) {
 
-    `${quizzles[0].choices.a}`.on("click", function() {
-     this.css("background-color", "white");
-    })
-    `${quizzles[1].choices.c}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[2].choices.c}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[3].choices.d}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[4].choices.d}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[5].choices.c}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[6].choices.c}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[7].choices.b}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[8].choices.b}`.on("click", function() {
-     this.css("background-color", "green");
-    })
-    `${quizzles[9].choices.c}`.on("click", function() {
-     this.css("background-color", "green");
-    })
+      let quizBag =
+        `<div id="quiz-box" class="container">
+        <h3 id="topic-container" class="container">${quizzles[i].question}</h3>
+        <ol id="choices-container" class="container list">
+            <li><button id="choice_a" class="quiz-button" type="button">${quizzles[i].choices.a}</button></li>
+            <li><button id="choice_b" class="quiz-button" type="button">${quizzles[i].choices.b}</button></li>
+            <li><button id="choice_c" class="quiz-button" type="button">${quizzles[i].choices.c}</button></li>
+            <li><button id="choice_d" class="quiz-button" type="button">${quizzles[i].choices.d}</button></li>
+        </ol>
+    </div>`
 
-  });
+      quizContainer.prepend(quizBag);
+    } else if (i = quizNum) {
+      quizContainer.hide();
+      timerEl.hide();
+      scoreContainer.show();
+    }
 
-// // testing condtion 
-// if(currentQuestion >= quizzles.length) {
-//   // end our timer
-//   // calulate user score
-//   // hide quiz container
-//   // show highscores modal ... etc..
-
-//view highscore container
-
-
-
-
-submitBtn.on("click", function () {
-  localStorage.setItem("highscores",)
+  })
 });
 
-// $("body").on("click", closeScores);
+const choicesContainer = $("#choices-container");
+
+choicesContainer.on("click", function(event) {
+  console.log("hey");
+  console.log(event);
+});
+
+quizButtons.on("click", function(event){
+  console.log("broooo!");
+  console.log(event);
+});
+
+
+highscoreBtn.on("click", function() {
+  welcomeContainer.hide();
+  quizContainer.hide();
+  nextBtn.hide();
+  scoreContainer.hide();
+  highscoreModal.show();
+});
+
+submitBtn.on("click", function (event) {
+  event.preventDefault();
+
+  let username = $("#usernameInput").val();
+  console.log(username)
+  localStorage.setItem(userScore, username)
+
+  highscoreModal.show();
+}
+);
+//close modal by clicking outside frame
+$("body").on("click", function () {
+  highscoreModal.modal("hide");
+});
 
 //close button event
 closeBtn.on("click", function () {
-  $("#highscoreModal").hide();
+  highscoreModal.modal("hide");
 });
 
 //exit button event
 exitBtn.on("click", function () {
-
+  highscoreModal.modal("hide");
 });
 
 //clear button event

@@ -19,13 +19,13 @@
   <!-- header to remain visible at all time except when opening highscore modal-->
   <header id="header-container" class="container">
     <h1><strong>Caped Crusader Quiz Quest</strong></h1>
-    <div class="imageContainer">
+    <div class="image-container" onclick=location.reload();>
       <img class="headerimage" id="batman" src="assets/images/batman-6061503_1280.png" height=100px>
       <img class="headerimage" id="quizzle" src="assets/images/negativeSpaceQuestion.png" height="100px">
     </div>
     <nav id="navigation" class="container">
       <div>
-        <button id="highscoreLink" class="button"">The Unexploded</button>
+        <button id="highscoreBtn" class="button" type="button"">Heroes</button>
       </div>
       <div>
         <h2 id="timer" class="timer p-2">⸘Tic-Toc...<span id="time">‽</span></h2>
@@ -40,17 +40,17 @@
       <p>Holy-Quizzoli! The Quizznizzler has struck again! They have infiltrated the Bat Cave and planted a Tic-Toc
         Time-Bomb (patent pending)!</p>
       <p>The only way to disarm this devious device is to solve the
-        quiz questions! Can our erstwhile heroes answer all Quizzler's
-        questions before their time runs out!?</p>
-      <p>Stay tuned for the explosive conclusion, or click on the button below to help the caped
-        crusader cruise through the quiz!</p>
-      <button id="startBtn" type="submit"">TicToc, Beat the Clock‽</button>
+        Quiz Questions! Can our erstwhile heroes answer all Quizznizzler's
+        Quizzles before their time runs out!?</p>
+      <p>Stay tuned for the EXPLOSIVE conclusion, or click on the button below to help the Caped
+        Crusader cruise through the quiz!</p>
+      <button id="startBtn" type="submit">TicToc, Beat the Clock‽</button>
     </section>
 
     <!-- Quiz container -->
     <section id="quizContainer" class="container">
         <div>
-          <button id="nextBtn" type="button">Next</button>
+          <button id="nextBtn" type="button" class="btn">Next</button>
         </div>
     </section>
 
@@ -59,26 +59,26 @@
       <div id="enterScore">
         <h2 id="scoreTitle">Score:<span id=score>0</span></h2>
         <form id="scoreForm">
-          <label id="label" for="usernameInput">Initials or Username:</label><br>
+          <label id="label" for="usernameInput">Superhero Identity:</label><br>
           <input id="usernameInput" type="text" autocomplete="username"><br>
-          <button id="submit">Submit</button>
+          <button id="submit" class="btn" type="button">Submit</button>
         </form>
       </div>
     </section>
     <!-- View highscores and clear highscores: taken from bootstrap-->
-    <section id="highscoreModal" class="modal container" tabindex="-1">
-      <div>
-        <h5 id="highscoreTitle">Unexploded Users:</h5>
-        <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <section id="highscore-modal" class="modal container">
+      <div id="highscore-header" class="header">
+        <h5 id="highscoreTitle">Heroes:</h5>
+        <button type="button" id="btn-close" class="btn fa fa-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div id="modal-body">
-        <p id="highscoreList">
-        </p>
+      <div id="container-body">
+        <ol id="highscoreList">
+        </ol>
       </div>
-      <div id="modal-footer">
-        <button id="btn-exit" type="button" class="btn btn-secondary""
-          data-bs-dismiss=" modal">Exit</button>
-        <button id="btn-clear" type="button" class="btn btn-primary"">Clear</button>
+      <div id="container-footer">
+        <button id="btn-exit" type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Exit</button>
+        <button id="btn-clear" type="button" class="btn btn-primary">Clear</button>
       </div>
     </section>
 
