@@ -43,6 +43,8 @@ Still a ways from a functioning app. Restructuring in progress. Using Erik Hover
 The providedREADME and User Story were provided by edX during the course of a bootcamp hosted by the University of New Brunswick (UNB). The basic form of the HTML and Javascript codes were heavily influenced by the Javascript quiz constructed by ehoversten on GitHub, one of many users who must have had similar assignments (<https://ehoversten.github.io/quiz_game/>). I have not copy pasted any of their code and have tried to make my own while taking inspiration from the structure of their quiz and code.
 Some bootstrap code was also used to help CSS formatting and add certain elements.
 
+All Batman images were found in the public domain and the graphics were added through Canva. (<canva.com>)
+
 ## License
 
 This project uses the MIT License, which can be read in full in the repository for this project at <https://github.com/Benhwaet/Quizzle-Me-This>.

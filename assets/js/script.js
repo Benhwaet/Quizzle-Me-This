@@ -22,8 +22,8 @@ const usernameInput = $("#usernameInput");
 const submitBtn = $("#submit");
 
 //Highscores container
-const highscoreModal = $(".highscore-modal");
-const highscores = $(".highscores");
+const highscoreContainer = $(".highscore-container");
+const highscoreList = $(".highscore-list");
 const scoreList = $("#highscoreList");
 const closeBtn = $("#btn-close");
 const exitBtn = $("#btn-exit");
@@ -121,7 +121,7 @@ $(function () {
   quizContainer.hide();
   nextBtn.hide();
   scoreContainer.hide();
-  highscoreModal.hide();
+  highscoreContainer.hide();
 });
 
 imageContainer.on("click", function () {
@@ -133,12 +133,12 @@ imageContainer.on("click", function () {
 //   quizContainer.hide();
 //   nextBtn.hide();
 //   scoreContainer.hide();
-//   highscoreModal.show();
+//   highscoreContainer.show();
 // };
 
 //function taken from edX bootcamp class notes
 function countdown() {
-  let timeLeft = 2;
+  let timeLeft = 100;
 
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
@@ -172,6 +172,7 @@ const choiceB = $("#choice_b")
 const choiceC = $("#choice_c")
 const choiceD = $("#choice_d")
 const nextBtn = $("#nextBtn");
+const button = $("button")
 
 //hide unnecessary containers and show quiz, initiate countdown
 startBtn.on("click", function () {
@@ -195,11 +196,7 @@ startBtn.on("click", function () {
   countdown();
 
   quizContainer.prepend(quizBag);
-  console.log(choiceA)
-
-  //detect correct and incorrect answers, adjust score and time accordingly
- 
-
+  
   //goes to next question and presents username entry form and score at the end.
   nextBtn.on("click", function () {
     let quizBox = $("#quiz-box");
@@ -230,12 +227,8 @@ startBtn.on("click", function () {
   })
 });
 
-const choicesContainer = $("#choices-container");
 
-choicesContainer.on("click", function(event) {
-  console.log("hey");
-  console.log(event);
-});
+const choicesContainer = $("#choices-container");
 
 quizButtons.on("click", function(event){
   console.log("broooo!");
@@ -248,35 +241,37 @@ highscoreBtn.on("click", function() {
   quizContainer.hide();
   nextBtn.hide();
   scoreContainer.hide();
-  highscoreModal.show();
+  highscoreContainer.show();
 });
 
 submitBtn.on("click", function (event) {
   event.preventDefault();
 
   let username = $("#usernameInput").val();
-  console.log(username)
-  localStorage.setItem(userScore, username)
+   
 
-  highscoreModal.show();
+  localStorage.setItem(userScore, username)
+  
+
+  highscoreContainer.show();
 }
 );
-//close modal by clicking outside frame
+//close Container by clicking outside frame
 $("body").on("click", function () {
-  highscoreModal.modal("hide");
+  highscoreContainer.hide();
 });
 
 //close button event
 closeBtn.on("click", function () {
-  highscoreModal.modal("hide");
+  highscoreContainer.hide();
 });
 
 //exit button event
 exitBtn.on("click", function () {
-  highscoreModal.modal("hide");
+  highscoreContainer.hide();
 });
 
 //clear button event
-clearBtn.on("click", function () {
-  localStorage.removeItem("highscores");
-});
+// clearBtn.on("click", function () {
+//   localStorage.removeItem("highscoreList");
+// });
