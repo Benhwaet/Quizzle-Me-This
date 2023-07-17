@@ -35,10 +35,12 @@ THEN I can save my initials and my score
 The user begins the quiz by pressing on the 'TicToc' start button. The timer of 30 seconds begin sand the user is then be presented with multiple choice questions and answers. When the user clicks on an answer, there will be an indications to show if the answer was correct or incorrect. When an answer is correct 5 seconds will be added to the clock, when it is incorrect 5 seconds will be subtracted from the clock. Should the timer count down to zero before the quiz is complete, Batman and Robin will die (and the user will fail the quiz).
 Included below are images of the four website states: welcome page, question page, name entering page, and the highscore viewing page, the last of which is not yet functional and will be a modal element.
 
+
 Preview:
 ![Alt text](assets/images/welcome-container.png)
 ![Alt text](assets/images/quiz-container.png)
 ![Alt text](assets/images/scoreContainer.png)
+
 
 ## Progress
 
