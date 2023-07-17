@@ -2,32 +2,32 @@
 
 //Header and navigation: static elements that remain regardless of webpage state
 const documentHtml = $(document);
-const header = document.GetElementById("header-container")
-const imageContainer = document.GetElementById("image-container")
-const highscoreBtn = document.GetElementById("highscoreBtn");
-const timerEl = document.GetElementById("timer");
-let timeEl = document.GetElementById("time");
+const header = $("#header-container")
+const imageContainer = $("#image-container")
+const highscoreBtn = $("#highscoreBtn");
+const timerEl = $("#timer");
+let timeEl = $("#time");
 
-const welcomeContainer = document.GetElementById("welcomeContainer");
-const startBtn = document.GetElementById("startBtn");
+const welcomeContainer = $("#welcomeContainer");
+const startBtn = $("#startBtn");
 
 //Quiz container
-const quizContainer = document.GetElementById("quizContainer");
+const quizContainer = $("#quizContainer");
 
 //Results and user entry container
-const scoreContainer = document.GetElementById("scoreContainer")
-const userScore = document.GetElementById("score").text();
-const nameLabel = document.GetElementById("enterName");
-const usernameInput = document.GetElementById("usernameInput");
-const submitBtn = document.GetElementById("submit");
+const scoreContainer = $("#scoreContainer")
+const userScore = $("#score").text();
+const nameLabel = $("#enterName");
+const usernameInput = $("#usernameInput");
+const submitBtn = $("#submit");
 
 //Highscores container
-const highscoreModal = document.GetElementById("highscoreModal");
-const highscoreList = document.getElementsByClassName("highscore-list");
-const scoreList = document.GetElementById("highscoreList");
-const closeBtn = document.GetElementById("btn-close");
-const exitBtn = document.GetElementById("btn-exit");
-const clearBtn = document.GetElementById("btn-clear");
+const highscoreModal = $("#highscoreModal");
+const highscoreList = $(".highscore-list");
+const scoreList = $("#highscoreList");
+const closeBtn = $("#btn-close");
+const exitBtn = $("#btn-exit");
+const clearBtn = $("#btn-clear");
 
 //Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
 let timeLeft = 30;
@@ -117,12 +117,12 @@ let quizNum = quizzles.length;
 console.log(quizNum);
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
-window.onload = function() {
+$(function () {
   quizContainer.hide();
   nextBtn.hide();
   scoreContainer.hide();
   highscoreModal.hide();
-};
+});
 
 imageContainer.on("click", function () {
   location.reload();
@@ -231,10 +231,11 @@ startBtn.on("click", function () {
 
 
     } else if (i > quizNum) {
-      clearInterval(timerInterval);
+      let timeLeft = 30 
       quizContainer.hide();
       timerEl.hide();
-      scoreContainer.show();  
+      scoreContainer.show(); 
+      console.log(timeLeft); 
     }
 
   })

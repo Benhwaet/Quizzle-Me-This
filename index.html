@@ -25,10 +25,10 @@
     </div>
     <nav id="navigation" class="container">
       <div>
-        <button id="highscoreBtn" class="button" type="button"">Heroes</button>
+        <button id="highscoreBtn" class="button" type="button" data-toggle="modal" data-target="#highscoreModal">Heroes</button>
       </div>
       <div>
-        <h2 id="timer" class="timer p-2">⸘Tic-Toc...<span id="time">‽</span></h2>
+        <h2 id="timer" class="timer">⸘Tic-Toc...<span id="time">‽</span></h2>
       </div>
     </nav>
   </header>
@@ -66,24 +66,25 @@
       </div>
     </section>
     <!-- View highscores and clear highscores: taken from bootstrap-->
-    <section id="highscore-container" class="container">
-      <div id="highscore-header" class="header">
-        <h5 id="highscoreTitle">Heroes:</h5>
-        <button type="button" id="btn-close" class="btn fa fa-close" aria-label="Close"></button>
-      </div>
-      <div id="container-body">
-        <ol id="highscore-list">
-          <li id="Hero1">$("userScore") -> $("username")</li>
-          <li id="Hero2">$("userScore") -> $("username")</li>
-          <li id="Hero3">$("userScore") -> $("username")</li>
-          <li id="Hero4">$("userScore") -> $("username")</li>
-          <li id="Hero5">$("userScore") -> $("username")</li>
-        </ol>
-      </div>
-      <div id="container-footer">
-        <button id="btn-exit" type="button" class="btn btn-secondary">Exit</button>
-        <button id="btn-clear" type="button" class="btn btn-primary">Clear</button>
-      </div>
+    <section id="highscoreModal" class="modal" role="dialogue" tabindex="-1" style="display: none;">
+        <div id="heroes">
+          <div id="spiel">
+            <div id="highscores">
+              <h5 id="highscoreTitle">Heroes:</h5>
+              <button type="button" id="btn-close" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+            </div>
+            <div id="modal-body">
+              <p id="highscoreList">
+              
+              </p>
+            </div>
+            <div class="footer" id="modal-footer">
+              <button id="btn-exit" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+              <button id="btn-clear" type="button" class="btn btn-primary">Clear</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
   </main>
