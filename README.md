@@ -36,6 +36,11 @@ The user begins the quiz by pressing on the 'TicToc' start button. The timer of 
 Included below are images of the four website states: welcome page, question page, name entering page, and the highscore viewing page, the last of which is not yet functional and will be a modal element.
 
 
+Preview:
+![Alt text](assets/images/welcome-container.png)
+![Alt text](assets/images/quiz-container.png)
+![Alt text](assets/images/scoreContainer.png)
+
 
 ## Progress
 
