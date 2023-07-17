@@ -224,7 +224,7 @@ startBtn.on("click", function () {
 
       quizContainer.prepend(quizBag);
 
-    } else if (i > 10) {
+    } else if (i = quizNum) {
       clearInterval(timerInterval);
       quizContainer.hide();
       timerEl.hide();
@@ -245,7 +245,7 @@ quizButtons.on("click", function(event){
   console.log(event);
 });
 
-
+//should show the highscores of the quiz users
 highscoreBtn.on("click", function() {
   welcomeContainer.hide();
   quizContainer.hide();
@@ -254,6 +254,7 @@ highscoreBtn.on("click", function() {
   highscoreModal.show();
 });
 
+//saves username to loacal storage
 submitBtn.on("click", function (event) {
   event.preventDefault();
 
@@ -266,6 +267,8 @@ submitBtn.on("click", function (event) {
   highscoreModal.show();
 }
 );
+
+// Highscore Modal functions
 //close Container by clicking outside frame
 $("body").on("click", function () {
   $("#highscoreModal").hide();
@@ -282,6 +285,6 @@ exitBtn.on("click", function () {
 });
 
 //clear button event
-// clearBtn.on("click", function () {
-//   localStorage.removeItem("highscoreList");
-// });
+clearBtn.on("click", function () {
+  localStorage.removeItem("highscoreList");
+});

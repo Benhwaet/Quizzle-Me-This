@@ -267,6 +267,7 @@ highscoreBtn.on("click", function () {
   highscoreModal.show();
 });
 
+// save data to local storage --> to change key - max of 7 saved users to display
 submitBtn.on("click", function (event) {
   event.preventDefault();
 

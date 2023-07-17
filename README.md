@@ -32,11 +32,14 @@ THEN I can save my initials and my score
 
 ## Usage
 
-The user begins the quiz by pressing on the 'Tic Toc' start button (not to be confused with TikTok). The timer of 30 seconds will then begin and the user will be presented with multiple choice questions and answers. When the user clicks on an answer, there will be an indications to show if the answer was correct or incorrect. When an answer is correct 5 seconds will be added to the clock, when it is incorrect 5 seconds will be subtracted from the clock. Included below are images of the four website states: welcome page, question page, name entering page, and the highscore viewing page.
+The user begins the quiz by pressing on the 'TicToc' start button. The timer of 30 seconds begin sand the user is then be presented with multiple choice questions and answers. When the user clicks on an answer, there will be an indications to show if the answer was correct or incorrect. When an answer is correct 5 seconds will be added to the clock, when it is incorrect 5 seconds will be subtracted from the clock. Should the timer count down to zero before the quiz is complete, Batman and Robin will die (and the user will fail the quiz).
+Included below are images of the four website states: welcome page, question page, name entering page, and the highscore viewing page, the last of which is not yet functional and will be a modal element.
 
 ## Progress
 
-Still a ways from a functioning app. Restructuring in progress. Using Erik Hoversten's Quiz_Game on GitHub, as well as simplestepcode's Javascritp Quiz Tutorial to help with structure and logic. Will keep working on it.
+The application is currently able to display all quiz questions and advance to the next question by clicking the nextBtn. The goal is to target the buttons or innerHtml of the choices to change the buttons' background colour through CSS manipulation -- green for correct answers and red for incorrect answers. At the same time, the buttons will be associated to a time increase or time decrease; they will also update the total score to be tallied and displayed as an ordered list in the highscoreContainer/Modal.
+
+The deployed website is on GitHub Pages at <https://benhwaet.github.io/Quizzle-Me-This/> and the repository is accessible here <https://github.com/Benhwaet/Quizzle-Me-This>.
 
 ## Credits
 
