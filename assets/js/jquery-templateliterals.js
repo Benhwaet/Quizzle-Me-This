@@ -2,32 +2,32 @@
 
 //Header and navigation: static elements that remain regardless of webpage state
 const documentHtml = $(document);
-const header = $("#header-container")
-const imageContainer = $("#image-container")
-const highscoreBtn = $("#highscoreBtn");
-const timerEl = $("#timer");
-let timeEl = $("#time");
+const header = document.GetElementById("header-container")
+const imageContainer = document.GetElementById("image-container")
+const highscoreBtn = document.GetElementById("highscoreBtn");
+const timerEl = document.GetElementById("timer");
+let timeEl = document.GetElementById("time");
 
-const welcomeContainer = $("#welcomeContainer");
-const startBtn = $("#startBtn");
+const welcomeContainer = document.GetElementById("welcomeContainer");
+const startBtn = document.GetElementById("startBtn");
 
 //Quiz container
-const quizContainer = $("#quizContainer");
+const quizContainer = document.GetElementById("quizContainer");
 
 //Results and user entry container
-const scoreContainer = $("#scoreContainer")
-const userScore = $("#score").text();
-const nameLabel = $("#enterName");
-const usernameInput = $("#usernameInput");
-const submitBtn = $("#submit");
+const scoreContainer = document.GetElementById("scoreContainer")
+const userScore = document.GetElementById("score").text();
+const nameLabel = document.GetElementById("enterName");
+const usernameInput = document.GetElementById("usernameInput");
+const submitBtn = document.GetElementById("submit");
 
 //Highscores container
-const highscoreModal = $("#highscoreModal");
-const highscoreList = $(".highscore-list");
-const scoreList = $("#highscoreList");
-const closeBtn = $("#btn-close");
-const exitBtn = $("#btn-exit");
-const clearBtn = $("#btn-clear");
+const highscoreModal = document.GetElementById("highscoreModal");
+const highscoreList = document.getElementsByClassName("highscore-list");
+const scoreList = document.GetElementById("highscoreList");
+const closeBtn = document.GetElementById("btn-close");
+const exitBtn = document.GetElementById("btn-exit");
+const clearBtn = document.GetElementById("btn-clear");
 
 //Global variables taken from Erik Hoversten Quiz-Game, lines 71-77
 let timeLeft = 30;
@@ -117,12 +117,12 @@ let quizNum = quizzles.length;
 console.log(quizNum);
 //hide unnecessary containers on page load
 //using JQuery to avoid ridiculously long list of variables
-$(function () {
+window.onload = function() {
   quizContainer.hide();
   nextBtn.hide();
   scoreContainer.hide();
   highscoreModal.hide();
-});
+};
 
 imageContainer.on("click", function () {
   location.reload();
@@ -155,12 +155,12 @@ function countdown() {
     // } 
     else if (timeLeft === 0) {
       // Once `timeLeft` gets to 0, set `timeEl` to an empty string
-      timeEl.text("BOOM! Batman is dead. X_X‽");
+      timeEl.text("X_X‽");
       // found on stackoverflow by @adeneo 
       //<https://stackoverflow.com/questions/18708439/show-a-specific-image-on-click>
-    //   const BOOM = `<img id="KABOOM" class="fullImage" src="assets/images/BOOM!!! (3).png" alt="BOOM! Batman is dead." onclick="location.reload()"/>`
-    //     quizContainer.before(BOOM);
-    //     quizContainer.hide();
+      const BOOM = `<img id="KABOOM" class="fullImage" src="assets/images/BOOM!!! (3).png" alt="BOOM! Batman is dead." onclick="location.reload()"/>`
+        quizContainer.before(BOOM);
+        quizContainer.hide();
 
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
@@ -224,7 +224,13 @@ startBtn.on("click", function () {
 
       quizContainer.prepend(quizBag);
 
-    } else if (i > 10) {
+      
+      choiceA.on("click", function(event){
+        console.log(event)
+      })
+
+
+    } else if (i > quizNum) {
       clearInterval(timerInterval);
       quizContainer.hide();
       timerEl.hide();
@@ -234,9 +240,6 @@ startBtn.on("click", function () {
   })
 });
 
-choiceA.on("click", function(event){
-    console.log(event)
-});
 
 const choicesContainer = $("#choices-container");
 
